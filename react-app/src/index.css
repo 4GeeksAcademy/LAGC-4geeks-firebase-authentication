@@ -5,9 +5,67 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://4kwallpapers.com/images/wallpapers/coastline-aerial-view-above-clouds-seascape-mountains-macos-5120x2880-3995.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.signin{
+  background-color: white;
+  color: black;
+  height: 45px;
+  width: 150px;
+  border-radius: 10px;
+  border:black 1px solid;
+  font-size: 25px;
+  /* margin-top: 575px; */
+  margin-left: 590px;
+
+
+}
+
+.slogan{
+  color: white;
+  font-size: 50px;
+  margin-top: 570px;
+  margin-left: 650px;
+}
+
+.bottom-slogan{
+  color: white;
+  font-size: 25px;
+  /* margin-bottom: 15px; */
+margin-right: 375px;
+margin-top: 0;
+}
+
+.title{
+  color:black;
+  font-size: 25px;
+  display: flex;
+  align-items: start;
+  padding-top: 5px;
+  margin-left: 10px;
+}
+
+.nav{
+  background-color: white;
+}
+
+.login-button{
+  background-color: orange;
+  font-size: 12px;
+  border-color: orange;
+  height: 35px;
+  
 }

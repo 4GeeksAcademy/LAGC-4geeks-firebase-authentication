@@ -1,81 +1,25 @@
-import { useEffect, useContext } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from './index';
-import { Context } from './Context'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landingpage from "./component/Landingpage"
+import Explore from "./component/Explore"
+import SignIn from "./component/Signin"
+import AddressToLatLngConverter from "./component/Geolocation"
+// import SignUp from "./component/Signup"
+// import ExploreDetail from "./component/Exploredetail"
 
-const provider = new GoogleAuthProvider();
-
-// provider.setCustomParameters({
-//   redirect_uri: 'https://elvishernandez-didactic-carnival-x5jgw56wqqwf9pvj-9099.preview.app.github.dev/'
-// })
-
-function App() {
-
-  const { setUser } = useContext(Context);
-
-  useEffect(() => {
-
-    (async () => {
-      try {
-        const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/helloWorld`);
-        const text = await res.text();
-
-        console.log(text);
-
-      }
-      catch (e) {
-        console.error(e);
-      }
-    })();
-  }, []);
+export default function App() {
   return (
-    <div className="App">
-      <button onClick={(e) => {
-        signInWithPopup(auth, provider)
-          .then(async (result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            console.log('token: ', token);
-            console.log('user: ', user);
-
-            const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/signUpOrSigninUser`, {
-              method: 'post',
-              body: JSON.stringify({ email: user.email }),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-
-            const dbUser = await res.json();
-
-            console.log('data: ', dbUser);
-            // setUser(dbUser.data);
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-          }).catch((error) => {
-            console.error(error);
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-          });
-        // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
-        //   .then((res) => console.log(res))
-        //   .catch((err) => console.error(err))
-      }}>Sign in</button>
-
-      <button onClick={() => auth.signOut()}>Sign out</button>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landingpage />}></Route>
+          <Route path="/explore" element={<Explore />}></Route>
+          <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/geolocation" element={<AddressToLatLngConverter />}></Route>
+          {/* <Route path="/exploredetails" element={<ExploreDetail />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route> */}
+        </Routes>
+  
+    </BrowserRouter>
   );
 }
 
-export default App;

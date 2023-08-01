@@ -6,18 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 
 import { initializeApp } from "firebase/app";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
-import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
+import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 import ContextProvider from "./Context";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB1UJSTIdYzKDgayNSRWMlVc_6i6J04Krg",
-  authDomain: "geeks-firebase-72e6d.firebaseapp.com",
-  projectId: "geeks-firebase-72e6d",
-  storageBucket: "geeks-firebase-72e6d.appspot.com",
-  messagingSenderId: "161315790364",
-  appId: "1:161315790364:web:08d050f50f2f75a97149d9",
-  measurementId: "G-ZCNEK8BRJL",
+  apiKey: "AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334",
+  authDomain: "music-player-final-project.firebaseapp.com",
+  projectId: "music-player-final-project",
+  storageBucket: "music-player-final-project.appspot.com",
+  messagingSenderId: "226920662966",
+  appId: "1:226920662966:web:b556085bc0ad517f436317",
+  measurementId: "G-VJ2MW5G87J",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -26,7 +26,10 @@ export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 connectAuthEmulator(auth, process.env.REACT_APP_FIREBASE_AUTH_HOST);
-connectFirestoreEmulator(firestore, process.env.REACT_APP_FIREBASE_FIRESTORE_HOST);
+connectFirestoreEmulator(
+  firestore,
+  process.env.REACT_APP_FIREBASE_FIRESTORE_HOST
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

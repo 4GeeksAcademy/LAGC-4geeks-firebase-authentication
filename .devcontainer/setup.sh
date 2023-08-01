@@ -8,13 +8,13 @@ while : ; do
   # Replace 'command_to_generate_input' with the actual command to generate the input text
   output=$(gh codespace ports -c $CODESPACE_NAME)
 
-  echo "$output" | grep -q "9099.preview.app.github.dev"
+  echo "$output" | grep -q "5001.preview.app.github.dev"
   first_string_found=$?
 
-  echo "$output" | grep -q "9099.preview.app.github.dev"
+  echo "$output" | grep -q "5057.preview.app.github.dev"
   second_string_found=$?
 
-  echo "$output" | grep -q "5001.preview.app.github.dev"
+  echo "$output" | grep -q "9099.preview.app.github.dev"
   third_string_found=$?
 
   if [ $first_string_found -eq 0 ] && [ $second_string_found -eq 0 ] && [ $third_string_found -eq 0 ]; then

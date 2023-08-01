@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.form-group {
+  display: flex;
+  /*position: absolute;*/
+  margin-top: 50px;
+  margin: auto;
+  background: rgb(231,233,235,0.7);
+  width: 600px;
+  height: auto;
+  border-radius: 10px;
+  border: solid gainsboro 1px;
+  align-items: center;
+  justify-content: space-between;
+padding: 20px;
+}
